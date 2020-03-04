@@ -18,6 +18,16 @@ const puppeteer = require('puppeteer');
     const firstHashtagPost = await page.$('._9AhH0');
     firstHashtagPost.click();
     await page.waitFor(1000);
-
     
+    let likeCounter = 0;
+    while (true) {
+        const likeButton = await page.$('body > div._2dDPU.vCf6V > div.zZYga > div > article > div.eo2As > section.ltpMr.Slqrh > span.fr66n > button')
+        likeButton.click();
+        likeCounter++;
+        console.log(likeCounter);
+        await page.waitFor(5000);
+        const nextPostButton = await page.$('.coreSpriteRightPaginationArrow');
+        nextPostButton.click();
+        await page.waitFor(5000);
+    }
 })();
